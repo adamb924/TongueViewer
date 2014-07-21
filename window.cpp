@@ -206,7 +206,9 @@ bool Window::GetSettings()
     labControls.clear();
     labParameters.clear();
 
-    fnSettings = QFileDialog::getOpenFileName(this,tr("Open Settings File"), "data", tr("Settings (XML) Files (*.xml)"));
+    qDebug() << "Warning:";
+    fnSettings = QFileDialog::getOpenFileName(this,tr("Open Settings File"), QString(), tr("Settings (XML) Files (*.xml)"));
+    qDebug() << "End Warning";
     if(fnSettings==NULL || !(fnSettings.length()>0))
     {
         return false;
@@ -709,7 +711,7 @@ void Window::ChangeSettings()
 
 void Window::OpenStatic()
 {
-    fnStatic = QFileDialog::getOpenFileName(this,tr("Open Static Tongue Posture"), "data", tr("Tongue Posture Binary Files (*.bin)"));
+    fnStatic = QFileDialog::getOpenFileName(this,tr("Open Static Tongue Posture"), QString(), tr("Tongue Posture Binary Files (*.bin)"));
 
     if(ReadStatic())
     {
@@ -722,7 +724,7 @@ void Window::OpenStatic()
 
 void Window::OpenParameterScore()
 {
-    fnAnimationP = QFileDialog::getOpenFileName(this,tr("Open Parameter Score"), "data", tr("Score Files (*.txt)"));
+    fnAnimationP = QFileDialog::getOpenFileName(this,tr("Open Parameter Score"), QString(), tr("Score Files (*.txt)"));
     if(ReadAnimationP())
     {
         QFileInfo info(fnAnimationP);
@@ -732,7 +734,7 @@ void Window::OpenParameterScore()
 
 void Window::OpenControlScore()
 {
-    fnAnimationC = QFileDialog::getOpenFileName(this,tr("Open Control Score"), "data", tr("Score Files (*.txt)"));
+    fnAnimationC = QFileDialog::getOpenFileName(this,tr("Open Control Score"), QString(), tr("Score Files (*.txt)"));
     if(ReadAnimationC())
     {
         QFileInfo info(fnAnimationC);
@@ -1622,7 +1624,7 @@ void Window::createMpeg()
     if(mode == M_PSCORE || mode == M_CSCORE)
     {
         movieFilename = QFileDialog::getSaveFileName(this, tr("Save File"),
-                                                     "",
+                                                     QString(),
                                                      tr("MPEG Movies (*.mpg)"));
         if(movieFilename == "")
             return;
