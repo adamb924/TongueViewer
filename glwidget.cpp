@@ -256,7 +256,7 @@ void GLWidget::TakePictures()
     }
 
     int *vp = (int*)malloc(sizeof(int)*4);
-    int w, h, i, j, pos;
+    int w, h, i, j;
     int w1, w2, w3;
     int nw, nh;
     int mn, mx;
@@ -419,7 +419,6 @@ void GLWidget::TakePictures()
     FILE *fid;
     fid = fopen("buf.bin","wb");
 
-    pos = 0;
     for(i=mn; i<mx; i++)
     {
         fwrite(buf1+w*i+mn1,4,w1,fid);

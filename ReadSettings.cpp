@@ -15,6 +15,10 @@ bool ReadSettings::startElement(const QString &namespaceURI,
                                 const QString &qName,
                                 const QXmlAttributes &attributes)
 {
+    Q_UNUSED(namespaceURI);
+    Q_UNUSED(localName);
+    Q_UNUSED(qName);
+    Q_UNUSED(attributes);
     currentString.clear();
     return true;
 }
@@ -23,6 +27,8 @@ bool ReadSettings::endElement(const QString &namespaceURI,
                               const QString &localName,
                               const QString &qName)
 {
+    Q_UNUSED(namespaceURI);
+    Q_UNUSED(localName);
     if(qName=="control") {
         controls << currentString;
     } else if(qName=="parameter") {
@@ -70,5 +76,6 @@ bool ReadSettings::characters(const QString &str)
 
 bool ReadSettings::fatalError(const QXmlParseException &exception)
 {
+    Q_UNUSED(exception);
     return true;
 }

@@ -1681,6 +1681,7 @@ void Window::saveMovieFile()
 
 void Window::cleanUpMovieFiles( int exitCode, QProcess::ExitStatus exitStatus )
 {
+    Q_UNUSED(exitStatus);
     if( exitCode == 0)
     {
         QDir dir = QDir::current();
