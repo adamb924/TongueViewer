@@ -217,7 +217,6 @@ bool Window::GetSettings()
         settings->setText("Change Settings\n("+fi.fileName()+")");
     }
 
-    //	QString settingsXmlFilename = "C:\\QtWork\\Tongue\\release\\data\\settings.xml";
     QFile file(fnSettings);
     QXmlInputSource inputSource(&file);
 
@@ -830,9 +829,6 @@ void Window::UpdateTongueShape()
         *(dynamicNodes+i) = *(dynamicNodes+i) * *(scaling+i) + *(means+i);
     }
 
-    for(i=0; i<10; i++)
-        qDebug() << *(dynamicNodes+i);
-
     CheckHull();
 
     glWidget->updateGL();
@@ -932,13 +928,10 @@ bool Window::ReadScaling()
 
     if(fnScaling == "")
     {
-        //	qDebug() << "Filling with ones...";
         for(i=0; i<dynamicNNodes*3; i++)
         {
-            //	    qDebug() << i;
             *(scaling+i) = 1;
         }
-        //	qDebug() << "Done filling";
         return true;
     }
 
@@ -1276,12 +1269,6 @@ void Window::ReadView(FILE *fid)
         return;
     }
     free(test);
-
-    qDebug() << nInstView;
-    for(i=0; i<nInstView; i++)
-    {
-        qDebug() << VIEW_TIME(i) << ROT_X(i) << ROT_Y(i) << ROT_Z(i);
-    }
 }
 
 bool Window::ReadAnimationC()
@@ -1507,7 +1494,6 @@ void Window::UpdateAnimation()
         quint32 inT = 0;
 
         double xrot, yrot, zrot;
-        //	qDebug() << time << VIEW_TIME(nInstView-1);
         if( time > VIEW_TIME(nInstView-1) )
         {
             xrot = ROT_X(nInstView-1);
@@ -1676,7 +1662,6 @@ void Window::saveMovieFile()
     QStringList arguments;
     arguments << "-delay" << QString::number(delay) << "-quality" << "95" << "tmp/frame*png" << movieFilename;
     myProcess->start("convert", arguments);
-    qDebug() << "convert " + arguments.join(" ");
 }
 
 void Window::cleanUpMovieFiles( int exitCode, QProcess::ExitStatus exitStatus )

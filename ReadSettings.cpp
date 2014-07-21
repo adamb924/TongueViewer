@@ -44,7 +44,6 @@ bool ReadSettings::endElement(const QString &namespaceURI,
     } else if(qName=="dNHull") {
         nHull = currentString.toULong();
     } else if(qName=="sConnectivity") {
-        //		qDebug() << currentString;
         sConnectivity = currentString;
     } else if(qName=="dConnectivity") {
         dConnectivity = currentString;

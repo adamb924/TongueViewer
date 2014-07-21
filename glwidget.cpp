@@ -466,11 +466,6 @@ void GLWidget::saveView(QString filename)
 
     buf = (quint32*)malloc(sizeof(quint32)*w*h);
 
-    //    qDebug() << *buf;
-    //    for(int i=0; i<5; i++)
-    //	qDebug() << *(buf+i);
-    //    qDebug() << filename;
-
     glReadPixels(0,0,w,h,GL_RGBA,GL_UNSIGNED_BYTE,buf);
 
     for(int i=0; i<w*h; i++)
