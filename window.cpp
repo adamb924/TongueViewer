@@ -82,7 +82,7 @@ double dist(double *x, double *y, unsigned short ndim)
     d = 0;
     for(i=0; i<ndim; i++)
     {
-	d += (*(x+i) - *(y+i))*(*(x+i) - *(y+i) );
+        d += (*(x+i) - *(y+i))*(*(x+i) - *(y+i) );
     }
     d = sqrt(d);
 
@@ -97,7 +97,7 @@ double dot(double *x,double *y, unsigned short ndim)
     d=0.0f;
     for(i=0; i<ndim; i++)
     {
-	d += *(x+i) * *(y+i);
+        d += *(x+i) * *(y+i);
     }
 
     return d;
@@ -142,8 +142,8 @@ Window::Window()
 
     if(!GetSettings())
     {
-	unrecoverable=true;
-	return;
+        unrecoverable=true;
+        return;
     }
 
     controls.fill(0,nControls);
@@ -209,12 +209,12 @@ bool Window::GetSettings()
     fnSettings = QFileDialog::getOpenFileName(this,tr("Open Settings File"), "data", tr("Settings (XML) Files (*.xml)"));
     if(fnSettings==NULL || !(fnSettings.length()>0))
     {
-	return false;
+        return false;
     }
     if(settings!=NULL)
     {
-	QFileInfo fi(fnSettings);
-	settings->setText("Change Settings\n("+fi.fileName()+")");
+        QFileInfo fi(fnSettings);
+        settings->setText("Change Settings\n("+fi.fileName()+")");
     }
 
     //	QString settingsXmlFilename = "C:\\QtWork\\Tongue\\release\\data\\settings.xml";
@@ -330,23 +330,23 @@ void Window::CreateToolBars()
 
     for(i=0; i<nControls; i++)
     {
-	slControls << createSlider();
-	leControls << new QLineEdit;
-	controlVLayout << new QVBoxLayout;
-	controlLabels << new QLabel(labControls[i]);
-	controlVLayout.last()->addWidget(controlLabels.last());
-	controlVLayout.last()->addWidget(slControls.last());
-	controlVLayout.last()->addWidget(leControls.last());
-	controlsLayout->addLayout(controlVLayout.last());
+        slControls << createSlider();
+        leControls << new QLineEdit;
+        controlVLayout << new QVBoxLayout;
+        controlLabels << new QLabel(labControls[i]);
+        controlVLayout.last()->addWidget(controlLabels.last());
+        controlVLayout.last()->addWidget(slControls.last());
+        controlVLayout.last()->addWidget(leControls.last());
+        controlsLayout->addLayout(controlVLayout.last());
 
-	connect(slControls[i], SIGNAL(sliderMoved(int)), this, SLOT(SetControlsFromSliders()));
-	connect(leControls[i], SIGNAL(editingFinished()), this, SLOT(SetControlsFromBoxes()));
+        connect(slControls[i], SIGNAL(sliderMoved(int)), this, SLOT(SetControlsFromSliders()));
+        connect(leControls[i], SIGNAL(editingFinished()), this, SLOT(SetControlsFromBoxes()));
 
-	connect(slControls[i], SIGNAL(sliderMoved(int)), this, SLOT(SetParametersFromControls()));
-	connect(leControls[i], SIGNAL(editingFinished()), this, SLOT(SetParametersFromControls()));
+        connect(slControls[i], SIGNAL(sliderMoved(int)), this, SLOT(SetParametersFromControls()));
+        connect(leControls[i], SIGNAL(editingFinished()), this, SLOT(SetParametersFromControls()));
 
-	connect(slControls[i], SIGNAL(sliderMoved(int)), glWidget, SLOT(updateGL()));
-	connect(leControls[i], SIGNAL(editingFinished()), glWidget, SLOT(updateGL()));
+        connect(slControls[i], SIGNAL(sliderMoved(int)), glWidget, SLOT(updateGL()));
+        connect(leControls[i], SIGNAL(editingFinished()), glWidget, SLOT(updateGL()));
     }
 
     controlsWidget->setLayout(controlsLayout);
@@ -364,23 +364,23 @@ void Window::CreateToolBars()
 
     for(i=0; i<nParameters; i++)
     {
-	slParameters << createSlider();
-	leParameters << new QLineEdit;
-	parametersVLayout << new QVBoxLayout;
-	parameterLabels << new QLabel(labParameters[i]);
-	parametersVLayout.last()->addWidget(parameterLabels.last());
-	parametersVLayout.last()->addWidget(slParameters.last());
-	parametersVLayout.last()->addWidget(leParameters.last());
-	parametersLayout->addLayout(parametersVLayout.last());
+        slParameters << createSlider();
+        leParameters << new QLineEdit;
+        parametersVLayout << new QVBoxLayout;
+        parameterLabels << new QLabel(labParameters[i]);
+        parametersVLayout.last()->addWidget(parameterLabels.last());
+        parametersVLayout.last()->addWidget(slParameters.last());
+        parametersVLayout.last()->addWidget(leParameters.last());
+        parametersLayout->addLayout(parametersVLayout.last());
 
-	connect(slParameters[i], SIGNAL(sliderMoved(int)), this, SLOT(SetParametersFromSliders()));
-	connect(leParameters[i], SIGNAL(editingFinished()), this, SLOT(SetParametersFromBoxes()));
+        connect(slParameters[i], SIGNAL(sliderMoved(int)), this, SLOT(SetParametersFromSliders()));
+        connect(leParameters[i], SIGNAL(editingFinished()), this, SLOT(SetParametersFromBoxes()));
 
-	connect(slParameters[i], SIGNAL(sliderMoved(int)), this, SLOT(SetControlsFromParameters()));
-	connect(leParameters[i], SIGNAL(editingFinished()), this, SLOT(SetControlsFromParameters()));
+        connect(slParameters[i], SIGNAL(sliderMoved(int)), this, SLOT(SetControlsFromParameters()));
+        connect(leParameters[i], SIGNAL(editingFinished()), this, SLOT(SetControlsFromParameters()));
 
-	connect(slParameters[i], SIGNAL(sliderMoved(int)), glWidget, SLOT(updateGL()));
-	connect(leParameters[i], SIGNAL(editingFinished()), glWidget, SLOT(updateGL()));
+        connect(slParameters[i], SIGNAL(sliderMoved(int)), glWidget, SLOT(updateGL()));
+        connect(leParameters[i], SIGNAL(editingFinished()), glWidget, SLOT(updateGL()));
     }
 
     parametersWidget->setLayout(parametersLayout);
@@ -495,14 +495,14 @@ void Window::CreateToolBars()
 
     if(hull == NULL)
     {
-	 doHull->setChecked(false);
-	 doHull->setEnabled(false);
+        doHull->setChecked(false);
+        doHull->setEnabled(false);
     }
 
     if(wCP==NULL || bCP==NULL)
     {
-	doSynchrony->setChecked(false);
-	doSynchrony->setEnabled(false);
+        doSynchrony->setChecked(false);
+        doSynchrony->setEnabled(false);
     }
 
     // initialize rotation sliders
@@ -515,30 +515,30 @@ void Window::SetControlsFromParameters()
 {
     if(wCP==NULL || bCP==NULL || !doSynchrony->isChecked())
     {
-	return;
+        return;
     }
 
     for(i=0; i<nControls; i++)
     {
-	*(inputCP+i) = 2*(parameters[i] -IN_MIN_CP(i))/(IN_MAX_CP(i)-IN_MIN_CP(i)) - 1;
+        *(inputCP+i) = 2*(parameters[i] -IN_MIN_CP(i))/(IN_MAX_CP(i)-IN_MIN_CP(i)) - 1;
     }
 
     for(i=0; i< *(nCP+0); i++) // first layer
     {
-	OUTPUT_CP(0,i) = tansig( dot(inputCP, *(wCP+0) + nControls*i  ,nControls) + BIAS_CP(0,i) );
+        OUTPUT_CP(0,i) = tansig( dot(inputCP, *(wCP+0) + nControls*i  ,nControls) + BIAS_CP(0,i) );
     }
 
     for(k=1; k<nlCP; k++) // subsequent layer
     {
-	for(i=0; i< *(nCP+k); i++)
-	{
-	    OUTPUT_CP(k,i) = tansig( dot( OUTPUT_ADDR_CP(k-1) , LW_ROW_CP(k,i), *(nCP+k-1)) + BIAS_CP(k,i) );
-	}
+        for(i=0; i< *(nCP+k); i++)
+        {
+            OUTPUT_CP(k,i) = tansig( dot( OUTPUT_ADDR_CP(k-1) , LW_ROW_CP(k,i), *(nCP+k-1)) + BIAS_CP(k,i) );
+        }
     }
 
     for(i=0; i<*(nCP+nlCP-1); i++)
     {
-	controls[i] = ((OUTPUT_CP(nlCP-1,i)+1)/2)*(OUT_MAX_CP(i)-OUT_MIN_CP(i))+OUT_MIN_CP(i);
+        controls[i] = ((OUTPUT_CP(nlCP-1,i)+1)/2)*(OUT_MAX_CP(i)-OUT_MIN_CP(i))+OUT_MIN_CP(i);
     }
 
     SetControlsBoxes();
@@ -549,31 +549,31 @@ void Window::SetParametersFromControls()
 {
     if(wPC==NULL || bPC==NULL)
     {
-    QString string = "NULL"; qCritical(string.toUtf8());
-	return;
+        QString string = "NULL"; qCritical(string.toUtf8());
+        return;
     }
 
     for(i=0; i<nControls; i++)
     {
-	*(inputPC+i) = 2*(controls[i] -IN_MIN_PC(i))/(IN_MAX_PC(i)-IN_MIN_PC(i)) - 1;
+        *(inputPC+i) = 2*(controls[i] -IN_MIN_PC(i))/(IN_MAX_PC(i)-IN_MIN_PC(i)) - 1;
     }
 
     for(i=0; i< *(nPC+0); i++) // first layer
     {
-	OUTPUT_PC(0,i) = tansig( dot(inputPC, *(wPC+0) + nControls*i  ,nControls) + BIAS_PC(0,i) );
+        OUTPUT_PC(0,i) = tansig( dot(inputPC, *(wPC+0) + nControls*i  ,nControls) + BIAS_PC(0,i) );
     }
 
     for(k=1; k<nlPC; k++) // subsequent layer
     {
-	for(i=0; i< *(nPC+k); i++)
-	{
-	    OUTPUT_PC(k,i) = tansig( dot( OUTPUT_ADDR_PC(k-1) , LW_ROW_PC(k,i), *(nPC+k-1)) + BIAS_PC(k,i) );
-	}
+        for(i=0; i< *(nPC+k); i++)
+        {
+            OUTPUT_PC(k,i) = tansig( dot( OUTPUT_ADDR_PC(k-1) , LW_ROW_PC(k,i), *(nPC+k-1)) + BIAS_PC(k,i) );
+        }
     }
 
     for(i=0; i<*(nPC+nlPC-1); i++)
     {
-	parameters[i] = ((OUTPUT_PC(nlPC-1,i)+1)/2)*(OUT_MAX_PC(i)-OUT_MIN_PC(i))+OUT_MIN_PC(i);
+        parameters[i] = ((OUTPUT_PC(nlPC-1,i)+1)/2)*(OUT_MAX_PC(i)-OUT_MIN_PC(i))+OUT_MIN_PC(i);
     }
 
     SetParametersBoxes();
@@ -588,7 +588,7 @@ void Window::SetParametersFromSliders()
     SetMode(M_DYNAMIC);
     for(i=0;i<nParameters;i++)
     {
-	parameters[i] = ((double)slParameters[i]->sliderPosition()/5760.0f) * (parameters_max[i]-parameters_min[i]) + parameters_min[i];
+        parameters[i] = ((double)slParameters[i]->sliderPosition()/5760.0f) * (parameters_max[i]-parameters_min[i]) + parameters_min[i];
     }
     SetParametersBoxes();
 
@@ -601,8 +601,8 @@ void Window::SetParametersFromBoxes()
     SetMode(M_DYNAMIC);
     for(i=0;i<nParameters;i++)
     {
-	parameters[i] = leParameters[i]->text().toDouble();
-	slParameters[i]->setSliderPosition( (int)(((parameters[i]-parameters_min[i])/(parameters_max[i]-parameters_min[i]))*5760) );
+        parameters[i] = leParameters[i]->text().toDouble();
+        slParameters[i]->setSliderPosition( (int)(((parameters[i]-parameters_min[i])/(parameters_max[i]-parameters_min[i]))*5760) );
     }
     SetParametersSliders();
 
@@ -614,8 +614,8 @@ void Window::SetParametersBoxes()
     QString str;
     for(i=0;i<nParameters;i++)
     {
-	str.setNum(parameters[i],'g',4);
-	leParameters[i]->setText(str);
+        str.setNum(parameters[i],'g',4);
+        leParameters[i]->setText(str);
     }
 }
 
@@ -623,7 +623,7 @@ void Window::SetParametersSliders()
 {
     for(i=0;i<nParameters;i++)
     {
-	slParameters[i]->setSliderPosition( (int)(((parameters[i]-parameters_min[i])/(parameters_max[i]-parameters_min[i]))*5760) );
+        slParameters[i]->setSliderPosition( (int)(((parameters[i]-parameters_min[i])/(parameters_max[i]-parameters_min[i]))*5760) );
     }
 }
 
@@ -632,7 +632,7 @@ void Window::SetControlsFromSliders()
     SetMode(M_DYNAMIC);
     for(i=0;i<nControls;i++)
     {
-	controls[i] = ((double)slControls[i]->sliderPosition()/5760.0f) * (controls_max[i]-controls_min[i]) + controls_min[i];
+        controls[i] = ((double)slControls[i]->sliderPosition()/5760.0f) * (controls_max[i]-controls_min[i]) + controls_min[i];
     }
     SetControlsBoxes();
 }
@@ -643,7 +643,7 @@ void Window::SetControlsFromBoxes()
     SetMode(M_DYNAMIC);
     for(i=0;i<nControls;i++)
     {
-	controls[i] = leControls[i]->text().toDouble();
+        controls[i] = leControls[i]->text().toDouble();
     }
     SetControlsSliders();
 }
@@ -652,7 +652,7 @@ void Window::SetControlsSliders()
 {
     for(i=0;i<nControls;i++)
     {
-	slControls[i]->setSliderPosition( (int)(((controls[i]-controls_min[i])/(double)(controls_max[i]-controls_min[i]))*5760) );
+        slControls[i]->setSliderPosition( (int)(((controls[i]-controls_min[i])/(double)(controls_max[i]-controls_min[i]))*5760) );
     }
 }
 
@@ -661,8 +661,8 @@ void Window::SetControlsBoxes()
     QString str;
     for(i=0;i<nControls;i++)
     {
-	str.setNum(controls[i],'g',4);
-	leControls[i]->setText(str);
+        str.setNum(controls[i],'g',4);
+        leControls[i]->setText(str);
     }
 }
 
@@ -674,33 +674,33 @@ void Window::CheckHull()
 
     if(hull==NULL || !doHull->isChecked())
     {
-	hullLabel->setText("");
-	return;
+        hullLabel->setText("");
+        return;
     }
 
     test = (double*)malloc(sizeof(double)*nParameters);
 
     for(i=0; i<nParameters; i++)
     {
-	*(test+i) = parameters[i];
+        *(test+i) = parameters[i];
     }
 
     for(i=0; i<nHull; i++)
     {
-	if( dot(test,hull+i*nParameters,nParameters) > 1.0001) // 1 plus 0.0001 for rounding
-	{
-	    result = 0;
-	}
+        if( dot(test,hull+i*nParameters,nParameters) > 1.0001) // 1 plus 0.0001 for rounding
+        {
+            result = 0;
+        }
     }
     free(test);
 
     if(result)
     {
-	hullLabel->setText("<font color=green>Within hull</font>");
+        hullLabel->setText("<font color=green>Within hull</font>");
     }
     else
     {
-	hullLabel->setText("<font color=red>Outside hull</font>");
+        hullLabel->setText("<font color=red>Outside hull</font>");
     }
 }
 
@@ -714,10 +714,10 @@ void Window::OpenStatic()
 
     if(ReadStatic())
     {
-	QFileInfo info(fnStatic);
-	tongue->setText("Open Static\n("+ info.fileName()+")");
+        QFileInfo info(fnStatic);
+        tongue->setText("Open Static\n("+ info.fileName()+")");
 
-	SetMode(M_STATIC);
+        SetMode(M_STATIC);
     }
 }
 
@@ -726,8 +726,8 @@ void Window::OpenParameterScore()
     fnAnimationP = QFileDialog::getOpenFileName(this,tr("Open Parameter Score"), "data", tr("Score Files (*.txt)"));
     if(ReadAnimationP())
     {
-	QFileInfo info(fnAnimationP);
-	scoreParameter->setText("Open Parameter Score\n("+ info.fileName()+")");
+        QFileInfo info(fnAnimationP);
+        scoreParameter->setText("Open Parameter Score\n("+ info.fileName()+")");
     }
 }
 
@@ -736,8 +736,8 @@ void Window::OpenControlScore()
     fnAnimationC = QFileDialog::getOpenFileName(this,tr("Open Control Score"), "data", tr("Score Files (*.txt)"));
     if(ReadAnimationC())
     {
-	QFileInfo info(fnAnimationC);
-	scoreControl->setText("Open Control Score\n("+ info.fileName()+")");
+        QFileInfo info(fnAnimationC);
+        scoreControl->setText("Open Control Score\n("+ info.fileName()+")");
     }
 }
 
@@ -745,7 +745,7 @@ bool Window::ReadStatic()
 {
     if(staticNodes==NULL)
     {
-	staticNodes = (float*)malloc(sizeof(float)*staticNNodes*3);
+        staticNodes = (float*)malloc(sizeof(float)*staticNNodes*3);
     }
 
     QFile file(fnStatic);
@@ -755,7 +755,7 @@ bool Window::ReadStatic()
     in.setFloatingPointPrecision(QDataStream::SinglePrecision);
     for(i=0; i<staticNNodes*3; i++)
     {
-	in >> *(staticNodes+i);
+        in >> *(staticNodes+i);
     }
     file.close();
 
@@ -779,17 +779,17 @@ void Window::SetMode(unsigned char m)
     case M_DYNAMIC:
     case M_PSCORE:
     case M_CSCORE:
-	glWidget->SetVariables(dynamicNElements,dynamicElements,dynamicNodes);
-	break;
+        glWidget->SetVariables(dynamicNElements,dynamicElements,dynamicNodes);
+        break;
     case M_STATIC:
-	glWidget->SetVariables(staticNElements,staticElements,staticNodes);
-	break;
+        glWidget->SetVariables(staticNElements,staticElements,staticNodes);
+        break;
     }
 
     if(mode == M_PSCORE || mode == M_CSCORE)
-	animationWidget->setEnabled(true);
+        animationWidget->setEnabled(true);
     else
-	animationWidget->setEnabled(false);
+        animationWidget->setEnabled(false);
 
     glWidget->updateGL();
 }
@@ -817,15 +817,15 @@ void Window::TryToFree(quint32 *var)
 void Window::UpdateTongueShape()
 {
     if(dynamicNodes==NULL || dynamicElements==NULL || eigen==NULL || means==NULL)
-	return;
+        return;
 
 
     // calculate the vertex positions
     for(i=0; i<(3*dynamicNNodes); i++)
     {
-	*(dynamicNodes+i) = 0.0f;
-	for(j=0; j<nParameters; j++)
-	    *(dynamicNodes+i) = *(dynamicNodes+i) + *(eigen + j*(3*dynamicNNodes) + i) * parameters[j];
+        *(dynamicNodes+i) = 0.0f;
+        for(j=0; j<nParameters; j++)
+            *(dynamicNodes+i) = *(dynamicNodes+i) + *(eigen + j*(3*dynamicNNodes) + i) * parameters[j];
 
         *(dynamicNodes+i) = *(dynamicNodes+i) * *(scaling+i) + *(means+i);
     }
@@ -843,7 +843,7 @@ bool Window::ReadDynamicElements()
 {
     if(dynamicElements==NULL)
     {
-	dynamicElements = (quint16*)malloc(sizeof(quint16)*dynamicNElements*3);
+        dynamicElements = (quint16*)malloc(sizeof(quint16)*dynamicNElements*3);
     }
 
     QFile file(fnDynamicElements);
@@ -853,7 +853,7 @@ bool Window::ReadDynamicElements()
     in.setFloatingPointPrecision(QDataStream::SinglePrecision);
     for(i=0; i<dynamicNElements*3; i++)
     {
-	in >> *(dynamicElements+i);
+        in >> *(dynamicElements+i);
     }
     file.close();
 
@@ -864,7 +864,7 @@ bool Window::ReadStaticElements()
 {
     if(staticElements==NULL)
     {
-	staticElements = (quint16*)malloc(sizeof(quint16)*staticNElements*3);
+        staticElements = (quint16*)malloc(sizeof(quint16)*staticNElements*3);
     }
 
     QFile file(fnStaticElements);
@@ -874,7 +874,7 @@ bool Window::ReadStaticElements()
     in.setFloatingPointPrecision(QDataStream::SinglePrecision);
     for(i=0; i<staticNElements*3; i++)
     {
-	in >> *(staticElements+i);
+        in >> *(staticElements+i);
     }
     file.close();
 
@@ -885,7 +885,7 @@ bool Window::ReadEigen()
 {
     if(eigen==NULL)
     {
-	eigen = (double*)malloc(sizeof(double)*3*dynamicNNodes*3*dynamicNNodes);
+        eigen = (double*)malloc(sizeof(double)*3*dynamicNNodes*3*dynamicNNodes);
     }
 
     QFile file(fnEigen);
@@ -895,7 +895,7 @@ bool Window::ReadEigen()
     in.setFloatingPointPrecision(QDataStream::DoublePrecision);
     for(i=0; i<3*dynamicNNodes*3*dynamicNNodes; i++)
     {
-	in >> *(eigen+i);
+        in >> *(eigen+i);
     }
     file.close();
 
@@ -906,7 +906,7 @@ bool Window::ReadMeans()
 {
     if(means==NULL)
     {
-	means = (double*)malloc(sizeof(double)*3*dynamicNNodes);
+        means = (double*)malloc(sizeof(double)*3*dynamicNNodes);
     }
 
     QFile file(fnMeans);
@@ -916,7 +916,7 @@ bool Window::ReadMeans()
     in.setFloatingPointPrecision(QDataStream::DoublePrecision);
     for(i=0; i<dynamicNNodes*3; i++)
     {
-	in >> *(means+i);
+        in >> *(means+i);
     }
     file.close();
 
@@ -927,19 +927,19 @@ bool Window::ReadScaling()
 {
     if(scaling==NULL)
     {
-	scaling = (double*)malloc(sizeof(double)*3*dynamicNNodes);
+        scaling = (double*)malloc(sizeof(double)*3*dynamicNNodes);
     }
 
     if(fnScaling == "")
     {
-//	qDebug() << "Filling with ones...";
-	for(i=0; i<dynamicNNodes*3; i++)
-	{
-//	    qDebug() << i;
-	    *(scaling+i) = 1;
-	}
-//	qDebug() << "Done filling";
-	return true;
+        //	qDebug() << "Filling with ones...";
+        for(i=0; i<dynamicNNodes*3; i++)
+        {
+            //	    qDebug() << i;
+            *(scaling+i) = 1;
+        }
+        //	qDebug() << "Done filling";
+        return true;
     }
 
     QFile file(fnScaling);
@@ -949,7 +949,7 @@ bool Window::ReadScaling()
     in.setFloatingPointPrecision(QDataStream::DoublePrecision);
     for(i=0; i<dynamicNNodes*3; i++)
     {
-	in >> *(scaling+i);
+        in >> *(scaling+i);
     }
     file.close();
 
@@ -960,7 +960,7 @@ bool Window::ReadInitial()
 {
     if(initial==NULL)
     {
-	initial = (double*)malloc(sizeof(double)*3*dynamicNNodes);
+        initial = (double*)malloc(sizeof(double)*3*dynamicNNodes);
     }
 
     QFile file(fnInitial);
@@ -970,7 +970,7 @@ bool Window::ReadInitial()
     in.setFloatingPointPrecision(QDataStream::DoublePrecision);
     for(i=0; i<dynamicNNodes*3; i++)
     {
-	in >> *(initial+i);
+        in >> *(initial+i);
     }
     file.close();
 
@@ -985,7 +985,7 @@ void Window::InitializeParameters()
     parameters.resize(nParameters);
     for(i=0; i<nParameters; i++)
     {
-	parameters[i] = *(initial+i);
+        parameters[i] = *(initial+i);
     }
 }
 
@@ -994,7 +994,7 @@ void Window::ResetParameters()
     parameters.resize(nParameters);
     for(i=0; i<nParameters; i++)
     {
-	parameters[i] = *(initial+i);
+        parameters[i] = *(initial+i);
     }
     SetParametersSliders();
     UpdateTongueShape();
@@ -1004,7 +1004,7 @@ bool Window::ReadRange()
 {
     if(range==NULL)
     {
-	range = (double*)malloc(sizeof(double)*2*3*dynamicNNodes);
+        range = (double*)malloc(sizeof(double)*2*3*dynamicNNodes);
     }
 
     QFile file(fnRange);
@@ -1014,18 +1014,18 @@ bool Window::ReadRange()
     in.setFloatingPointPrecision(QDataStream::DoublePrecision);
     for(i=0; i<2*3*dynamicNNodes; i++)
     {
-	in >> *(range+i);
+        in >> *(range+i);
     }
     file.close();
 
 
     parameters_min.resize(nParameters);
     for(i=0; i<nParameters; i++)
-	parameters_min[i] = *(range+i);
+        parameters_min[i] = *(range+i);
 
     parameters_max.resize(nParameters);
     for(i=0; i<nParameters; i++)
-	parameters_max[i] = *(range+3*dynamicNNodes+i);
+        parameters_max[i] = *(range+3*dynamicNNodes+i);
 
     return true;
 }
@@ -1036,13 +1036,13 @@ bool Window::ReadHull()
     if( file.open(QIODevice::ReadOnly) == false ) { qCritical() << "Error opening " + fnHull + "\n(fnHull)"; return false; }
 
     if(hull==NULL)
-	hull = (double*)malloc(sizeof(double)*nHull*nParameters);
+        hull = (double*)malloc(sizeof(double)*nHull*nParameters);
 
     QDataStream in(&file);
     in.setByteOrder(QDataStream::LittleEndian);
     in.setFloatingPointPrecision(QDataStream::DoublePrecision);
     for(i=0; i<nHull*nParameters; i++)
-	in >> *(hull+i);
+        in >> *(hull+i);
     file.close();
 
     return true;
@@ -1064,7 +1064,7 @@ bool Window::ReadControlToParameterANN()
     nPC = (quint32*)malloc(nlPC*sizeof(quint32));
 
     for(i=0; i<nlPC; i++)
-	in >> *(nPC+i);
+        in >> *(nPC+i);
 
     inputPC = (double*)malloc(nControls*sizeof(double));
     inminPC = (double*)malloc(nControls*sizeof(double));
@@ -1075,39 +1075,39 @@ bool Window::ReadControlToParameterANN()
 
     *(wPC+0) = (double*)malloc( *(nPC+0) * nControls * sizeof(double) );
     for(i=0; i< *(nPC+0) * nControls; i++)
-	in >> *(*(wPC+0)+i);
+        in >> *(*(wPC+0)+i);
 
     for(i=1; i<nlPC; i++)
     {
-	*(wPC+i) = (double*)malloc( *(nPC+i) * *(nPC+i-1) * sizeof(double) );
-	for(j=0; j< *(nPC+i) * *(nPC+i-1); j++ )
-	    in >> *(*(wPC+i)+j);
+        *(wPC+i) = (double*)malloc( *(nPC+i) * *(nPC+i-1) * sizeof(double) );
+        for(j=0; j< *(nPC+i) * *(nPC+i-1); j++ )
+            in >> *(*(wPC+i)+j);
     }
 
     bPC = (double **)malloc(nlPC*sizeof(double *));
     for(i=0; i<nlPC; i++)
     {
-	*(bPC+i) = (double*)malloc( *(nPC+i) * sizeof(double) );
-	for(j=0; j< *(nPC+i); j++ )
-	    in >> *(*(bPC+i)+j);
+        *(bPC+i) = (double*)malloc( *(nPC+i) * sizeof(double) );
+        for(j=0; j< *(nPC+i); j++ )
+            in >> *(*(bPC+i)+j);
 
     }
 
     for(i=0; i<nControls; i++)
-	in >> *(inminPC+i);
+        in >> *(inminPC+i);
 
     for(i=0; i<nControls; i++)
-	in >> *(inmaxPC+i);
+        in >> *(inmaxPC+i);
 
     for(i=0; i<*(nPC+nlPC-1); i++)
-	in >> *(outminPC+i);
+        in >> *(outminPC+i);
 
     for(i=0; i<*(nPC+nlPC-1); i++)
-	in >> *(outmaxPC+i);
+        in >> *(outmaxPC+i);
 
     outputPC = (double **)malloc(nlPC*sizeof(double *));
     for(i=0; i<nlPC; i++)
-	*(outputPC+i) = (double*)malloc( *(nPC+i) * sizeof(double) );
+        *(outputPC+i) = (double*)malloc( *(nPC+i) * sizeof(double) );
 
     file.close();
 
@@ -1130,14 +1130,14 @@ bool Window::ReadParameterToControlANN()
 
     if(nParameters!=dummy)
     {
-    QString string = "The specified network is not compatible with the number of parameters you\'re using."; qCritical(string.toUtf8());
-	return false;
+        QString string = "The specified network is not compatible with the number of parameters you\'re using."; qCritical(string.toUtf8());
+        return false;
     }
 
     nCP = (quint32*)malloc(nlCP*sizeof(quint32));
 
     for(i=0; i<nlCP; i++)
-	in >> *(nCP+i);
+        in >> *(nCP+i);
 
 
     inputCP = (double*)malloc(nParameters*sizeof(double));
@@ -1150,52 +1150,52 @@ bool Window::ReadParameterToControlANN()
 
     for(i=0; i< *(nCP+0) * nParameters; i++)
     {
-	in >> *(*(wCP+0)+i);
+        in >> *(*(wCP+0)+i);
     }
 
     for(i=1; i<nlCP; i++)
     {
-	*(wCP+i) = (double*)malloc( *(nCP+i) * *(nCP+i-1) * sizeof(double) );
-	for(j=0; j< *(nCP+i) * *(nCP+i-1); j++)
-	{
-	    in >> *(*(wCP+i)+j);
-	}
+        *(wCP+i) = (double*)malloc( *(nCP+i) * *(nCP+i-1) * sizeof(double) );
+        for(j=0; j< *(nCP+i) * *(nCP+i-1); j++)
+        {
+            in >> *(*(wCP+i)+j);
+        }
     }
 
     bCP = (double **)malloc(nlCP*sizeof(double *));
     for(i=0; i<nlCP; i++)
     {
-	*(bCP+i) = (double*)malloc( *(nCP+i) * sizeof(double) );
-	for(j=0; j< *(nCP+i); j++)
-	{
-	    in >> *(*(bCP+i)+j);
-	}
+        *(bCP+i) = (double*)malloc( *(nCP+i) * sizeof(double) );
+        for(j=0; j< *(nCP+i); j++)
+        {
+            in >> *(*(bCP+i)+j);
+        }
     }
 
     for(i=0; i<nParameters; i++)
     {
-	in >> *(inminCP+i);
+        in >> *(inminCP+i);
     }
 
     for(i=0; i<nParameters; i++)
     {
-	in >> *(inmaxCP+i);
+        in >> *(inmaxCP+i);
     }
 
     for(i=0; i< *(nCP+nlCP-1); i++)
     {
-	in >> *(outminCP+i);
+        in >> *(outminCP+i);
     }
 
     for(i=0; i< *(nCP+nlCP-1); i++)
     {
-	in >> *(outmaxCP+i);
+        in >> *(outmaxCP+i);
     }
 
     outputCP = (double **)malloc(nlCP*sizeof(double *));
     for(i=0; i<nlCP; i++)
     {
-	*(outputCP+i) = (double*)malloc( *(nCP+i) * sizeof(double) );
+        *(outputCP+i) = (double*)malloc( *(nCP+i) * sizeof(double) );
     }
 
     file.close();
@@ -1215,8 +1215,8 @@ bool Window::ReadAnimationP()
     fid = fopen(ba.data(),"r");
     if(fid==NULL)
     {
-    QString string = "Could not open: " + fnHull + "\n(Window::ReadAnimationP())"; qCritical(string.toUtf8());
-	return false;
+        QString string = "Could not open: " + fnHull + "\n(Window::ReadAnimationP())"; qCritical(string.toUtf8());
+        return false;
     }
 
     fscanf(fid,"%lu\n",(unsigned long*)&nInstP);
@@ -1224,8 +1224,8 @@ bool Window::ReadAnimationP()
 
     if(nPara!=nParameters)
     {
-    QString string = "The number of parameters specified in the animation ("+QString::number(nPara)+") is not the same as the number of parameters in your XML settings file ("+QString::number(nParameters)+")."; qCritical(string.toUtf8());
-	return false;
+        QString string = "The number of parameters specified in the animation ("+QString::number(nPara)+") is not the same as the number of parameters in your XML settings file ("+QString::number(nParameters)+")."; qCritical(string.toUtf8());
+        return false;
     }
 
     fscanf(fid,"%lg\n",&fpsP);
@@ -1234,11 +1234,11 @@ bool Window::ReadAnimationP()
 
     for(i=0; i<nInstP; i++)
     {
-	fscanf(fid,"%lg\t",instP+(1+nParameters)*i); // read the time
-	for(j=1; j<=nParameters; j++)
-	{
-	    fscanf(fid,"%lg\t",instP+(1+nParameters)*i+j); // read a coordinate
-	}
+        fscanf(fid,"%lg\t",instP+(1+nParameters)*i); // read the time
+        for(j=1; j<=nParameters; j++)
+        {
+            fscanf(fid,"%lg\t",instP+(1+nParameters)*i+j); // read a coordinate
+        }
 
     }
 
@@ -1262,25 +1262,25 @@ void Window::ReadView(FILE *fid)
     fgets(test,5,fid);
     if( strcmp( test, "view" ) == 0 )
     {
-	fscanf(fid,"%lu\n",(unsigned long*)&nInstView);
+        fscanf(fid,"%lu\n",(unsigned long*)&nInstView);
 
-	instView = (double*)malloc(sizeof(double)*(30)*4);
+        instView = (double*)malloc(sizeof(double)*(30)*4);
 
-	for(i=0; i<nInstView; i++)
-	    fscanf(fid,"%lg\t%lg\t%lg\t%lg\n",instView + 4*i + 0,instView + 4*i + 1,instView + 4*i + 2,instView + 4*i + 3);
+        for(i=0; i<nInstView; i++)
+            fscanf(fid,"%lg\t%lg\t%lg\t%lg\n",instView + 4*i + 0,instView + 4*i + 1,instView + 4*i + 2,instView + 4*i + 3);
     }
     else
     {
-	free(test);
-	instView = 0;
-	return;
+        free(test);
+        instView = 0;
+        return;
     }
     free(test);
 
     qDebug() << nInstView;
     for(i=0; i<nInstView; i++)
     {
-	qDebug() << VIEW_TIME(i) << ROT_X(i) << ROT_Y(i) << ROT_Z(i);
+        qDebug() << VIEW_TIME(i) << ROT_X(i) << ROT_Y(i) << ROT_Z(i);
     }
 }
 
@@ -1296,8 +1296,8 @@ bool Window::ReadAnimationC()
     fid = fopen(ba.data(),"r");
     if(fid==NULL)
     {
-    QString string = "Could not open: " + fnHull + "\n(Window::ReadAnimationC())"; qCritical(string.toUtf8());
-	return false;
+        QString string = "Could not open: " + fnHull + "\n(Window::ReadAnimationC())"; qCritical(string.toUtf8());
+        return false;
     }
 
     fscanf(fid,"%lu\n",(unsigned long*)&nInstC);
@@ -1305,8 +1305,8 @@ bool Window::ReadAnimationC()
 
     if(nPara!=nControls)
     {
-    QString string = "This file is not compatible with the current settings."; qCritical(string.toUtf8());
-	return false;
+        QString string = "This file is not compatible with the current settings."; qCritical(string.toUtf8());
+        return false;
     }
 
     fscanf(fid,"%lg\n",&fpsC);
@@ -1315,11 +1315,11 @@ bool Window::ReadAnimationC()
 
     for(i=0; i<nInstC; i++)
     {
-	fscanf(fid,"%lg\t",instC+(1+nControls)*i); // read the time
-	for(j=1; j<=nControls; j++)
-	{
-	    fscanf(fid,"%lg\t",instC+(1+nParameters)*i+j); // read a coordinate
-	}
+        fscanf(fid,"%lg\t",instC+(1+nControls)*i); // read the time
+        for(j=1; j<=nControls; j++)
+        {
+            fscanf(fid,"%lg\t",instC+(1+nParameters)*i+j); // read a coordinate
+        }
 
     }
 
@@ -1343,13 +1343,13 @@ void Window::SkipBackward()
     switch(mode)
     {
     case M_PSCORE:
-	frameP = 0;
-	if(playing) { Play(); }
-	break;
-	case M_CSCORE:
-	frameC = 0;
-	if(playing) { Play(); }
-	break;
+        frameP = 0;
+        if(playing) { Play(); }
+        break;
+    case M_CSCORE:
+        frameC = 0;
+        if(playing) { Play(); }
+        break;
     }
     UpdateAnimation();
 }
@@ -1359,13 +1359,13 @@ void Window::SkipForward()
     switch(mode)
     {
     case M_PSCORE:
-	frameP = lastFrameP;
-	if(playing) { Play(); }
-	break;
-	case M_CSCORE:
-	frameC = lastFrameC;
-	if(playing) { Play(); }
-	break;
+        frameP = lastFrameP;
+        if(playing) { Play(); }
+        break;
+    case M_CSCORE:
+        frameC = lastFrameC;
+        if(playing) { Play(); }
+        break;
     }
     UpdateAnimation();
 }
@@ -1375,11 +1375,11 @@ void Window::SeekBackward()
     switch(mode)
     {
     case M_PSCORE:
-	frameP--;
-	break;
+        frameP--;
+        break;
     case M_CSCORE:
-	frameC--;
-	break;
+        frameC--;
+        break;
     }
     UpdateAnimation();
 }
@@ -1389,11 +1389,11 @@ void Window::SeekForward()
     switch(mode)
     {
     case M_PSCORE:
-	frameP++;
-	break;
+        frameP++;
+        break;
     case M_CSCORE:
-	frameC++;
-	break;
+        frameC++;
+        break;
     }
     UpdateAnimation();
 }
@@ -1403,33 +1403,33 @@ void Window::Play()
     switch(mode)
     {
     case M_PSCORE:
-	if(playing)
-	{
-	    playing=false;
-	    timer->stop();
-	    play->setIcon(style()->standardIcon(QStyle::SP_MediaPlay));
-	}
-	else
-	{
-	    playing=true;
-	    timer->start((int)(1000.0f/fpsP));
-	    play->setIcon(style()->standardIcon(QStyle::SP_MediaPause));
-	}
-	break;
+        if(playing)
+        {
+            playing=false;
+            timer->stop();
+            play->setIcon(style()->standardIcon(QStyle::SP_MediaPlay));
+        }
+        else
+        {
+            playing=true;
+            timer->start((int)(1000.0f/fpsP));
+            play->setIcon(style()->standardIcon(QStyle::SP_MediaPause));
+        }
+        break;
     case M_CSCORE:
-	if(playing)
-	{
-	    playing=false;
-	    timer->stop();
-	    play->setIcon(style()->standardIcon(QStyle::SP_MediaPlay));
-	}
-	else
-	{
-	    playing=true;
-	    timer->start((int)(1000.0f/fpsC));
-	    play->setIcon(style()->standardIcon(QStyle::SP_MediaPause));
-	}
-	break;
+        if(playing)
+        {
+            playing=false;
+            timer->stop();
+            play->setIcon(style()->standardIcon(QStyle::SP_MediaPlay));
+        }
+        else
+        {
+            playing=true;
+            timer->start((int)(1000.0f/fpsC));
+            play->setIcon(style()->standardIcon(QStyle::SP_MediaPause));
+        }
+        break;
     }
 }
 
@@ -1441,108 +1441,108 @@ void Window::UpdateAnimation()
     switch(mode)
     {
     case M_PSCORE:
-	if(frameP<0 || frameP > lastFrameP)
-	{
-	    frameP=0;
-	    if(recordingMovie)
-	    {
-		recordingMovie = false;
-		playing = false;
-		timer->stop();
-		saveMovieFile();
-		return;
-	    }
-	}
-	time = (1.0f/fpsP)*frameP + TIME_P(0);
-	frame = frameP;
+        if(frameP<0 || frameP > lastFrameP)
+        {
+            frameP=0;
+            if(recordingMovie)
+            {
+                recordingMovie = false;
+                playing = false;
+                timer->stop();
+                saveMovieFile();
+                return;
+            }
+        }
+        time = (1.0f/fpsP)*frameP + TIME_P(0);
+        frame = frameP;
 
-	inP = 0;
-	while( time > TIME_P(inP+1) )
-	    inP++;
+        inP = 0;
+        while( time > TIME_P(inP+1) )
+            inP++;
 
-	for(i=0; i<nParameters; i++)
-	    parameters[i] = LEVEL_P(inP,i) + (time-TIME_P(inP)) * (LEVEL_P(inP+1,i)-LEVEL_P(inP,i))/(TIME_P(inP+1)-TIME_P(inP));
+        for(i=0; i<nParameters; i++)
+            parameters[i] = LEVEL_P(inP,i) + (time-TIME_P(inP)) * (LEVEL_P(inP+1,i)-LEVEL_P(inP,i))/(TIME_P(inP+1)-TIME_P(inP));
 
 
-	slProgress->setValue(frameP);
+        slProgress->setValue(frameP);
 
-	UpdateTongueShape();
-	SetParametersSliders();
-	SetControlsFromParameters();
+        UpdateTongueShape();
+        SetParametersSliders();
+        SetControlsFromParameters();
 
-	break;
+        break;
     case M_CSCORE:
-	if(frameC<0 || frameC > lastFrameC)
-	{
-	    frameC=0;
-	    if(recordingMovie)
-	    {
-		recordingMovie = false;
-		playing = false;
-		timer->stop();
-		saveMovieFile();
-		return;
-	    }
-	}
-	time = (1.0f/fpsC)*frameC + TIME_C(0);
-	frame = frameC;
+        if(frameC<0 || frameC > lastFrameC)
+        {
+            frameC=0;
+            if(recordingMovie)
+            {
+                recordingMovie = false;
+                playing = false;
+                timer->stop();
+                saveMovieFile();
+                return;
+            }
+        }
+        time = (1.0f/fpsC)*frameC + TIME_C(0);
+        frame = frameC;
 
-	inC = 0;
-	while( time > TIME_C(inC+1) )
-	    inC++;
+        inC = 0;
+        while( time > TIME_C(inC+1) )
+            inC++;
 
-	for(i=0; i<nControls; i++)
-	    controls[i] = LEVEL_C(inC,i) + (time-TIME_C(inC)) * (LEVEL_C(inC+1,i)-LEVEL_C(inC,i))/(TIME_C(inC+1)-TIME_C(inC));
+        for(i=0; i<nControls; i++)
+            controls[i] = LEVEL_C(inC,i) + (time-TIME_C(inC)) * (LEVEL_C(inC+1,i)-LEVEL_C(inC,i))/(TIME_C(inC+1)-TIME_C(inC));
 
-	slProgress->setValue(frameC);
+        slProgress->setValue(frameC);
 
-	SetControlsSliders();
-	SetParametersFromControls();
-	break;
+        SetControlsSliders();
+        SetParametersFromControls();
+        break;
     }
 
     // update the view settings, if applicable
     if(instView != 0)
     {
-	quint32 inT = 0;
+        quint32 inT = 0;
 
-	double xrot, yrot, zrot;
-//	qDebug() << time << VIEW_TIME(nInstView-1);
-	if( time > VIEW_TIME(nInstView-1) )
-	{
-	    xrot = ROT_X(nInstView-1);
-	    yrot = ROT_Y(nInstView-1);
-	    zrot = ROT_Z(nInstView-1);
-	}
-	else
-	{
-	    while( time > VIEW_TIME(inT+1) )
-		inT++;
+        double xrot, yrot, zrot;
+        //	qDebug() << time << VIEW_TIME(nInstView-1);
+        if( time > VIEW_TIME(nInstView-1) )
+        {
+            xrot = ROT_X(nInstView-1);
+            yrot = ROT_Y(nInstView-1);
+            zrot = ROT_Z(nInstView-1);
+        }
+        else
+        {
+            while( time > VIEW_TIME(inT+1) )
+                inT++;
 
-	    // x-rotation
-	    xrot = ROT_X(inT) + (time-VIEW_TIME(inT)) * (ROT_X(inT+1)-ROT_X(inT))/(VIEW_TIME(inT+1)-VIEW_TIME(inT));
+            // x-rotation
+            xrot = ROT_X(inT) + (time-VIEW_TIME(inT)) * (ROT_X(inT+1)-ROT_X(inT))/(VIEW_TIME(inT+1)-VIEW_TIME(inT));
 
-	    // z-rotation
-	    yrot = ROT_Y(inT) + (time-VIEW_TIME(inT)) * (ROT_Y(inT+1)-ROT_Y(inT))/(VIEW_TIME(inT+1)-VIEW_TIME(inT));
+            // z-rotation
+            yrot = ROT_Y(inT) + (time-VIEW_TIME(inT)) * (ROT_Y(inT+1)-ROT_Y(inT))/(VIEW_TIME(inT+1)-VIEW_TIME(inT));
 
-	    // z-rotation
-	    zrot = ROT_Z(inT) + (time-VIEW_TIME(inT)) * (ROT_Z(inT+1)-ROT_Z(inT))/(VIEW_TIME(inT+1)-VIEW_TIME(inT));
-	}
-	while(zrot < 0)
-	    zrot += 360;
+            // z-rotation
+            zrot = ROT_Z(inT) + (time-VIEW_TIME(inT)) * (ROT_Z(inT+1)-ROT_Z(inT))/(VIEW_TIME(inT+1)-VIEW_TIME(inT));
+        }
+        while(zrot < 0)
+            zrot += 360;
 
-	xSlider->setValue(16*(int)xrot);
-	ySlider->setValue(16*(int)yrot);
-	zSlider->setValue(16*(int)zrot);
+        xSlider->setValue(16*(int)xrot);
+        ySlider->setValue(16*(int)yrot);
+        zSlider->setValue(16*(int)zrot);
     }
 
     if(recordingMovie)
     {
-	timer->stop();
-	QString fn;
-	fn.sprintf("tmp/frame%.6d.png",frame);
-	glWidget->saveView(fn);
-	timer->start();
+        timer->stop();
+        QString fn;
+        fn.sprintf("tmp/frame%.6d.png",frame);
+        glWidget->saveView(fn);
+        timer->start();
     }
 }
 
@@ -1551,11 +1551,11 @@ void Window::SetAnimationFromSlider()
     switch(mode)
     {
     case M_PSCORE:
-	frameP = slProgress->value();
-	break;
+        frameP = slProgress->value();
+        break;
     case M_CSCORE:
-	frameC = slProgress->value();
-	break;
+        frameC = slProgress->value();
+        break;
     }
     UpdateAnimation();
 }
@@ -1572,36 +1572,36 @@ void Window::DumpBinary()
     switch(mode)
     {
     case M_STATIC:
-    string = "It doesn't make sense to do this in static mode, since you already have a binary file, "+fnStatic+"."; qCritical(string.toUtf8());
-	break;
+        string = "It doesn't make sense to do this in static mode, since you already have a binary file, "+fnStatic+"."; qCritical(string.toUtf8());
+        break;
     case M_DYNAMIC:
-	if(dynamicNodes==NULL)
-	{
-        string = "No tongue to dump!"; qCritical(string.toUtf8());
-	    return;
-	}
+        if(dynamicNodes==NULL)
+        {
+            string = "No tongue to dump!"; qCritical(string.toUtf8());
+            return;
+        }
 
-	bool ok;
-	fn = QInputDialog::getText(this, tr("Enter a filename"),tr("Filename (.bin assumed):"), QLineEdit::Normal,tr(""), &ok);
-	if (!ok || fn.isEmpty())
-	{
-	    return;
-	}
-	fn += ".bin";
+        bool ok;
+        fn = QInputDialog::getText(this, tr("Enter a filename"),tr("Filename (.bin assumed):"), QLineEdit::Normal,tr(""), &ok);
+        if (!ok || fn.isEmpty())
+        {
+            return;
+        }
+        fn += ".bin";
 
-	fid = fopen(fn.toLocal8Bit().data(),"wb");
+        fid = fopen(fn.toLocal8Bit().data(),"wb");
 
-	if(fid==NULL)
-	{
-        string = "Couldn\'t write to: "+fn; qCritical(string.toUtf8());
-	    return;
-	}
-	fwrite(dynamicNodes,sizeof(float),3*dynamicNNodes,fid);
-	fclose(fid);
-	break;
-	case M_PSCORE:
-	case M_CSCORE:
-	break;
+        if(fid==NULL)
+        {
+            string = "Couldn\'t write to: "+fn; qCritical(string.toUtf8());
+            return;
+        }
+        fwrite(dynamicNodes,sizeof(float),3*dynamicNNodes,fid);
+        fclose(fid);
+        break;
+    case M_PSCORE:
+    case M_CSCORE:
+        break;
     }
 
     free(buffer);
@@ -1635,27 +1635,27 @@ void Window::createMpeg()
 {
     if(mode == M_PSCORE || mode == M_CSCORE)
     {
-	movieFilename = QFileDialog::getSaveFileName(this, tr("Save File"),
-				   "",
-				   tr("MPEG Movies (*.mpg)"));
-	if(movieFilename == "")
-	    return;
+        movieFilename = QFileDialog::getSaveFileName(this, tr("Save File"),
+                                                     "",
+                                                     tr("MPEG Movies (*.mpg)"));
+        if(movieFilename == "")
+            return;
 
-	recordingMovie = true;
+        recordingMovie = true;
 
-	frameP = -1;
-	frameC = -1;
+        frameP = -1;
+        frameC = -1;
 
-	QDir dir("tmp");
-	if(!dir.exists())
-	    QDir::current().mkdir("tmp");
-	dir = QDir::current();
-	dir.cd("tmp");
-	QStringList files = dir.entryList(QDir::Files);
-	for(int i=0; i<files.count(); i++)
-	    QFile::remove( dir.absoluteFilePath(files.at(i)) );
+        QDir dir("tmp");
+        if(!dir.exists())
+            QDir::current().mkdir("tmp");
+        dir = QDir::current();
+        dir.cd("tmp");
+        QStringList files = dir.entryList(QDir::Files);
+        for(int i=0; i<files.count(); i++)
+            QFile::remove( dir.absoluteFilePath(files.at(i)) );
 
-	Play();
+        Play();
     }
 }
 
@@ -1664,11 +1664,11 @@ void Window::saveMovieFile()
     double delay=6.0f;
     if(mode == M_PSCORE)
     {
-	delay = 1.0f/fpsP;
+        delay = 1.0f/fpsP;
     }
     else if(mode == M_CSCORE)
     {
-	delay = 1.0f/fpsC;
+        delay = 1.0f/fpsC;
     }
 
     QProcess *myProcess = new QProcess(this);
@@ -1683,11 +1683,11 @@ void Window::cleanUpMovieFiles( int exitCode, QProcess::ExitStatus exitStatus )
 {
     if( exitCode == 0)
     {
-	QDir dir = QDir::current();
-	dir.cd("tmp");
-	QStringList files = dir.entryList(QDir::Files);
-	for(int i=0; i<files.count(); i++)
-	    QFile::remove( dir.absoluteFilePath(files.at(i)) );
-	dir.rmdir( dir.absolutePath() );
+        QDir dir = QDir::current();
+        dir.cd("tmp");
+        QStringList files = dir.entryList(QDir::Files);
+        for(int i=0; i<files.count(); i++)
+            QFile::remove( dir.absoluteFilePath(files.at(i)) );
+        dir.rmdir( dir.absolutePath() );
     }
 }

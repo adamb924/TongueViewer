@@ -34,56 +34,56 @@
 
 class GLWidget : public QGLWidget
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	GLWidget(QWidget *parent = 0);
-	~GLWidget();
+    GLWidget(QWidget *parent = 0);
+    ~GLWidget();
 
-	QSize minimumSizeHint() const;
-	QSize sizeHint() const;
-	void SetVariables(quint32 nel, quint16 *el, float *no);
-	void saveView(QString filename);
+    QSize minimumSizeHint() const;
+    QSize sizeHint() const;
+    void SetVariables(quint32 nel, quint16 *el, float *no);
+    void saveView(QString filename);
 
 
 public slots:
-	void setXRotation(int angle);
-	void setYRotation(int angle);
-	void setZRotation(int angle);
-	void TakePictures();
-	void normalizeAngle(int *angle);
+    void setXRotation(int angle);
+    void setYRotation(int angle);
+    void setZRotation(int angle);
+    void TakePictures();
+    void normalizeAngle(int *angle);
 
 signals:
-	void xRotationChanged(int angle);
-	void yRotationChanged(int angle);
-	void zRotationChanged(int angle);
+    void xRotationChanged(int angle);
+    void yRotationChanged(int angle);
+    void zRotationChanged(int angle);
 
 protected:
-	void initializeGL();
-	void paintGL();
-	void resizeGL(int width, int height);
-	void mousePressEvent(QMouseEvent *event);
-	void mouseMoveEvent(QMouseEvent *event);
+    void initializeGL();
+    void paintGL();
+    void resizeGL(int width, int height);
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
 
-	void Log(QString err);
+    void Log(QString err);
 
 private:
 
-	QColor bgColor;
+    QColor bgColor;
 
-	// model parameters
-	unsigned char mode;
-	float *nodes;
-	quint16 *elements;
-	quint32 nelements;
+    // model parameters
+    unsigned char mode;
+    float *nodes;
+    quint16 *elements;
+    quint32 nelements;
 
-	GLuint object;
-	int xRot;
-	int yRot;
-	int zRot;
-	QPoint lastPos;
-	QColor trolltechGreen;
-	QColor trolltechPurple;
+    GLuint object;
+    int xRot;
+    int yRot;
+    int zRot;
+    QPoint lastPos;
+    QColor trolltechGreen;
+    QColor trolltechPurple;
 };
 
 #endif
